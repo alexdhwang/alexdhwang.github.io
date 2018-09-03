@@ -29,6 +29,13 @@ git clone <url>
 ```
 
 ### 2.2 Recording Changes to the Repository
+
+The `git add <file>` command has two semantics: Tracking a new file and staging a modified file.
+
+The `git status` or `git status --short` can see the current status of working directory.
+
+`git diff` compares what is in your working directory with what is in your staging area. `git diff --staged` compares your staged changes with the last commit. We can also use `git difftool` to call external diff viewing program.
+
 ### 2.3 Viewing the Commit History
 ### 2.4 Undoing Things
 ### 2.5 Working with Remotes
