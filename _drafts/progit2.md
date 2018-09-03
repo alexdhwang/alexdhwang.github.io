@@ -36,6 +36,8 @@ The `git status` or `git status --short` can see the current status of working d
 
 `git diff` compares what is in your working directory with what is in your staging area. `git diff --staged` compares your staged changes with the last commit. We can also use `git difftool` to call external diff viewing program.
 
+You can use `git rm --cached <file>` to remove accidentally staged files.
+
 ### 2.3 Viewing the Commit History
 ### 2.4 Undoing Things
 ### 2.5 Working with Remotes
