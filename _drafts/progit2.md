@@ -30,3 +30,26 @@ Git doesn't store data as changesets or differences, but instead as a series of 
 | snapshot A |     | snapshot B |     | snapshot C |
 +------------+     +------------+     +------------+
 ```
+
+When you command `git branch test`, Git creates a new branch named `test`. A branch is simply a pointer to a commit object, so the cost of its creation is very cheap. The default branch is named `master`.
+
+```
+                                      +------------+   +--------+
+                                      |   master   |   |  test  |
+                                      +-----+------+   +---+----+
+                                            |              |
+                                            |   +----------+
+                                            |   |
+                                            v   v
++------------+     +------------+     +-----+---+--+
+|commit 98ca8+<----+commit 72fd6+<----+commit 12b3d|
++-----+------+     +-----+------+     +-----+------+
+      |                  |                  |
+      |                  |                  |
+      v                  v                  v
++-----+------+     +-----+------+     +-----+------+
+| snapshot A |     | snapshot B |     | snapshot C |
++------------+     +------------+     +------------+
+```
+
+Git holds a special pointer named `HEAD` to mark the current branch. In default, the `HEAD` points to `master`. When you command `git checkout test`, the `HEAD` points to `test`. It is also very cheap.
