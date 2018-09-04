@@ -54,6 +54,27 @@ Common options for `git log`:
 | `--oneline` | Shorthand for `--pretty=oneline` `--abbrev-commit` used together. |
 
 ### 2.4 Undoing Things
+
+Adding forgotten files:
+
+```
+git commit -m "bla bla bla"
+git add fogotten_files
+git commit --amend
+```
+
+Unstaging a staged file:
+
+```
+git reset HEAD <file>
+```
+
+Unmodifying a modified file:
+
+```
+git checkout -- <file>
+```
+
 ### 2.5 Working with Remotes
 ### 2.6 Tagging
 ### 2.7 Git Aliases
