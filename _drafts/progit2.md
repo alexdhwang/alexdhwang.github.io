@@ -31,7 +31,7 @@ Git doesn't store data as changesets or differences, but instead as a series of 
 +------------+     +------------+     +------------+
 ```
 
-When you command `git branch test`, Git creates a new branch named `test`. A branch is simply a pointer to a commit object, so the cost of its creation is very cheap. The default branch is named `master`.
+When you command `git branch test`, Git creates a new branch named `test`. A branch is simply a pointer to a commit object (or saying that a file containing 40 characters), so the cost of its creation is very cheap. The default branch is named `master`.
 
 ```
                                       +------------+   +--------+
@@ -52,4 +52,22 @@ When you command `git branch test`, Git creates a new branch named `test`. A bra
 +------------+     +------------+     +------------+
 ```
 
-Git holds a special pointer named `HEAD` to mark the current branch. In default, the `HEAD` points to `master`. When you command `git checkout test`, the `HEAD` points to `test`. It is also very cheap.
+Git holds a special pointer named `HEAD` to mark the current branch. In default, the `HEAD` points to `master`. When you command `git checkout test`, the `HEAD` points to `test`. It is also very cheap. You can make a new commit in the `test` branch.
+
+```
+                                                            +--------+
+                                                            |  HEAD  |
+                                                            +---+----+
+                                                                |
+                                                                v
+                                       +------------+       +---+----+
+                                       |   master   |       |  test  |
+                                       +-----+------+       +---+----+
+                                             |                  |
+                                             v                  v
++--------------+   +--------------+   +------+-------+   +------+-------+
+| commit 98ca8 +<--+ commit 72fd6 +<--+ commit 12b3d +<--+ commit 2e38a |
++--------------+   +--------------+   +--------------+   +--------------+
+```
+
+If you switch back to the `master` branch and continue to modify your contents, the commit history will diverge. You can command `git log --oneline --decorate --graph --all` to see the branch graph.
