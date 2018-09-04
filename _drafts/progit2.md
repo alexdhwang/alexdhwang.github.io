@@ -17,4 +17,16 @@ Why is Git's branching model the "killer feature"?
 
 ### Git Braching Model
 
-Git doesn't store data as changesets or differences, but instead as a series of *snapshots*. A snapshot of content is a checksum of the current version of files (including directories). The computation of checksums uses the [SHA-1 algorithm](https://en.wikipedia.org/wiki/SHA-1) (*Secure Hash Algorithm 1*), and the result of a checksum is a *40 digits long* hexadecimal number. When you command `git add`, Git takes a snapshot and stores it into the staging area.
+Git doesn't store data as changesets or differences, but instead as a series of *snapshots*. A snapshot of content is a checksum of the current version of files (including directories). The computation of checksums uses the [SHA-1 algorithm](https://en.wikipedia.org/wiki/SHA-1) (*Secure Hash Algorithm 1*), and the result of a checksum is a *40 digits long* hexadecimal number. When you command `git add`, Git takes a snapshot and stores it into the staging area. When you command `git commit`, Git makes an object which has a pointer to the staged snapshot. So the commit history forms a chain.
+
+```
++------------+     +------------+     +------------+
+|commit 98ca8+<----+commit 72fd6+<----+commit 12b3d|
++-----+------+     +-----+------+     +-----+------+
+      |                  |                  |
+      |                  |                  |
+      v                  v                  v
++-----+------+     +-----+------+     +-----+------+
+| snapshot A |     | snapshot B |     | snapshot C |
++------------+     +------------+     +------------+
+```
