@@ -11,3 +11,6 @@ Notes on [*Pro Git*, 2nd Edition](https://git-scm.com/book/en/v2) by Scott Chaco
 
 - [Scott Chacon](https://scottchacon.com/), a software developer working on GitHub.com, as well as the maintainer of the [Git homepage](https://git-scm.com/) and the Git Community Book.
 
+## Chapter 3. Git Branching
+
+Why is Git's branching model the "killer feature"?
