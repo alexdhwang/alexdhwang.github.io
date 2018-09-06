@@ -36,12 +36,7 @@ Core parts: `objects/`, `refs/`, `HEAD`, `index`.
 Git stores all the content as *tree* and *blob* objects, with trees corresponding directories and blobs corresponding file contents. All objects are atored in the `.git/objects/` directory. For each object, Git calculates its SHA-1 hash value, a 40 characters long hexadecimal number. The first two characters would be a directory name, and the rest 38 characters would be a file name.
 
 ```
-find .git/objects -type f
-```
-
-may ouput
-
-```
+$ find .git/objects -type f
 .git/objects/f9/9464bc09d8a9ebe7eb82e09c7508e621469b75
 .git/objects/f0/6a80f1b2da6ed65c2816c39632e8189830ff5b
 .git/objects/f0/85f447537f451c88e544936486f01e12b1b6ea
@@ -51,3 +46,11 @@ may ouput
 .git/objects/e9/31a10281a2499ad719042f251da72d30915afe
 .git/objects/f1/4ae37410e6e188d0adac9d33b6b522b71b1084
 ```
+
+`git hash-object` would take content and return a unique key.
+
+```
+$ echo 'test content' | git hash-object -w --stdin
+```
+
+The `-w` option tells the command to not simply return a key but to write that object to the database.
