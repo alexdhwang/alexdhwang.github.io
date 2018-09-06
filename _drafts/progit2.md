@@ -51,6 +51,14 @@ $ find .git/objects -type f
 
 ```
 $ echo 'test content' | git hash-object -w --stdin
+d670460b4b4aece5915caf5c68d12f560a9fe3e4
 ```
 
-The `-w` option tells the command to not simply return a key but to write that object to the database.
+The `-w` option tells the command to not simply return a key but to write that object to the database. The `--stdin` tells the command to read content from the standard input. You can also command it read content from a file: `$ git hash-object -w <file>`.
+
+`git cat-file` would retrieve the content from the Git database.
+
+```
+$ git cat-file -p d670460b4b4aece5915caf5c68d12f560a9fe3e4
+test content
+```
